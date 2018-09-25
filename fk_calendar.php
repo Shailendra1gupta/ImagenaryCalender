@@ -1,5 +1,5 @@
 <?php
-define('FAKE_CALENDAR_MONTHS', 13);
+define('IMAGINARY_CALENDAR_MONTHS', 13);
 define('EVEN_MONTH_DAYS', 21);
 define('ODD_MONTH_DAYS', 22);
 define('YEAR_MONTHS_COUNT', 13);
@@ -8,7 +8,7 @@ define('INITIAL_FIRST_DAY', 1);
 define('START_CALENDAR', "01.01.1990");
 
 
-class FakeCalendar extends Exception {
+class ImaginaryCalendar extends Exception {
 	public $dateStr = "";
 	public $day;
 	public $month;
@@ -80,7 +80,7 @@ class FakeCalendar extends Exception {
 		return ($day > 0 && $day<23);
 	}
 	public function isValidMonth($month) {
-		return ($month > 0 && $month <= FAKE_CALENDAR_MONTHS);
+		return ($month > 0 && $month <= IMAGINARY_CALENDAR_MONTHS);
 	}
 	public function isValidYear($year) {
 		return ($year >=0 && strlen($year)==4);
@@ -128,7 +128,7 @@ class FakeCalendar extends Exception {
 			}else {
 				$month = (int) $month;
 			}
-			print $month;die;
+			// print $month;die;
 			if (!$this->isValidMonth($month)) {
 				throw new Exception("Invalid Month format provided");
 			}
@@ -136,7 +136,7 @@ class FakeCalendar extends Exception {
 				$month_array = $this->get_month();
 				echo $month_array[--$month];
 			}
-		} catch (Exception $e) {
+		} catch (\Exception $e) {
 			echo $errorMsg = 'Error on line '.$this->getLine().' in '.$this->getFile().': <b>'.$e->getMessage().'</b>';die;
 		}
 	}
